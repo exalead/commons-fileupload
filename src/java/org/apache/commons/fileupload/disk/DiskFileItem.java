@@ -17,7 +17,6 @@ package org.apache.commons.fileupload.disk;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -36,7 +35,7 @@ import org.apache.commons.io.output.DeferredFileOutputStream;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.ParameterParser;
-
+import org.apache.commons.fileupload.util.FastByteArrayInputStream;
 
 /**
  * <p> The default implementation of the
@@ -206,7 +205,7 @@ public class DiskFileItem
         if (cachedContent == null) {
             cachedContent = dfos.getData();
         }
-        return new ByteArrayInputStream(cachedContent);
+        return new FastByteArrayInputStream(cachedContent);
     }
 
 

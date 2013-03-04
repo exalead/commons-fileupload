@@ -15,11 +15,12 @@
  */
 package org.apache.commons.fileupload;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+
+import org.apache.commons.fileupload.util.FastByteArrayOutputStream;
 
 /**
  * <p> Low level API for processing file uploads.
@@ -438,7 +439,7 @@ public class MultipartStream {
         int i = 0;
         byte[] b = new byte[1];
         // to support multi-byte characters
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        FastByteArrayOutputStream baos = new FastByteArrayOutputStream();
         int sizeMax = HEADER_PART_SIZE_MAX;
         int size = 0;
         while (i < HEADER_SEPARATOR.length) {
